@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{50BD7CED-6E38-46EA-978E-1E416BB02E28}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>HoodWink</RootNamespace>
+    <AssemblyName>HoodWink</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\lib\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Languages\Cpp\Compilers\Exe.cs" />
+    <Compile Include="Languages\Cpp\Extras\AmsiBypass.cs" />
+    <Compile Include="Languages\Cpp\FileDependencies\Kernel32.cs" />
+    <Compile Include="Languages\Cpp\Formats\Exe.cs" />
+    <Compile Include="Languages\Cpp\Generators\Exe.cs" />
+    <Compile Include="Languages\Cpp\Protections\Aes256.cs" />
+    <Compile Include="Languages\Cpp\Protections\None.cs" />
+    <Compile Include="Languages\Cpp\Techniques\Inline_NewThread.cs" />
+    <Compile Include="Languages\Cpp\Techniques\Remote_CreateRemoteThread.cs" />
+    <Compile Include="Languages\Csharp\Compilers\Exe.cs" />
+    <Compile Include="Languages\Csharp\Extras\AmsiBypass.cs" />
+    <Compile Include="Languages\Csharp\FileDependencies\Kernel32.cs" />
+    <Compile Include="Languages\Csharp\Formats\Exe.cs" />
+    <Compile Include="Languages\Csharp\Generators\Exe.cs" />
+    <Compile Include="Languages\Csharp\Generators\None.cs" />
+    <Compile Include="Languages\Csharp\Protections\Aes256.cs" />
+    <Compile Include="Languages\Csharp\Techniques\Inline.cs" />
+    <Compile Include="Languages\Csharp\Techniques\Inline_NewThread.cs" />
+    <Compile Include="Languages\Csharp\Techniques\Remote_CreateRemoteThread.cs" />
+    <Compile Include="Languages\Csharp\Techniques\Spawn_QueueApc.cs" />
+    <Compile Include="Models\Base\Compiler.cs" />
+    <Compile Include="Models\Base\Extras.cs" />
+    <Compile Include="Models\Base\FormatExe.cs" />
+    <Compile Include="Models\Base\Generator.cs" />
+    <Compile Include="Models\Base\Protections.cs" />
+    <Compile Include="Models\Base\Technique.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\AutoGenerator.cs" />
+    <Compile Include="Services\CryptoService.cs" />
+    <Compile Include="Services\PathService.cs" />
+    <Compile Include="Services\PrintService.cs" />
+    <Compile Include="Services\WinkService.cs" />
+    <Compile Include="Services\WriteService.cs" />
+    <Compile Include="Suggestions\Commands.cs" />
+    <Compile Include="Utils\Enums.cs" />
+    <None Include="packages.config" />
+    <None Include="TechniqueSource\Spawn_QueueApc.cs" />
+    <None Include="TechniqueSource\Remote_CreateRemoteThread.cs" />
+    <None Include="TechniqueSource\Inline_NewThread.cs" />
+    <None Include="TechniqueSource\Inline.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets'))" />
+  </Target>
+</Project>
